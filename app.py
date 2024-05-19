@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
-import talib
+import pandas_ta as ta
 import joblib
 import io
 from keras.models import load_model
@@ -46,30 +46,26 @@ nifty1_5_sell_log  = joblib.load('./models/nifty1_models_5min_sell/NIFTY1!_5_log
 app = Flask(__name__)
 
 def add_technical_indicators(df):
-    print(df.shape)
-    close_pricesx = df['Close'].values
-    close_prices = close_pricesx[::-1]
-    
+    # Reverse DataFrame
+    df = df[::-1]
     # EMA
-    ema_20 = talib.EMA(close_prices, timeperiod=20)
-    ema_50 = talib.EMA(close_prices, timeperiod=50)
-    # RSI, custom_objects=None, compile=True, safe_mode=True
-    rsi = talib.RSI(close_prices, timeperiod=14)
-    # MACD
-    macd, signal_line, _ = talib.MACD(close_prices)
-    # BBands
-    upper_band, middle_band, lower_band = talib.BBANDS(close_prices, timeperiod=20, nbdevup=2, nbdevdn=2)
-    
-    df['ema_20'] = ema_20[::-1]
-    df['ema_50'] = ema_50[::-1]
-    df['rsi'] = rsi[::-1]
-    df['macd'] = macd[::-1]
-    df['signal_line'] = signal_line[::-1]
-    df['upper_band'] = upper_band[::-1]
-    df['middle_band'] = middle_band[::-1]
-    df['lower_band'] = lower_band[::-1]
+    df['ema_20'] = ta.ema(df['Close'], length=20)
+    df['ema_50'] = ta.ema(df['Close'], length=50)
 
-    df = df.dropna() 
+    # RSI
+    df['rsi'] = ta.rsi(df['Close'], length=14)
+
+    # MACD
+    df['macd'] = ta.macd(df['Close'])['MACD_12_26_9']  # MACD line
+    df['signal_line'] = ta.macd(df['Close'])['MACDs_12_26_9']   # Signal line
+
+    # BBands
+    bbands = ta.bbands(df['Close'], length=20, std=2)
+    df['upper_band'] = bbands['BBU_20_2.0']
+    df['middle_band'] = bbands['BBM_20_2.0']
+    df['lower_band'] = bbands['BBL_20_2.0']
+    df = df[::-1]
+    df = df.dropna()
     return df
 
 def calculate_new_columns(df):
