@@ -6,60 +6,50 @@ import pandas_ta as ta
 import joblib
 import io
 from keras.models import load_model
+import os
 
-# nifty 1
+# Load models
 nifty_1_buy_bilstm = load_model('./models/nifty_models_1min/NIFTY_1_bilstm_model.keras')
-nifty_1_buy_lstm  = load_model('./models/nifty_models_1min/NIFTY_1_lstm_model.keras')
-nifty_1_buy_log  = joblib.load('./models/nifty_models_1min/NIFTY_1_log_model.joblib')
+nifty_1_buy_lstm = load_model('./models/nifty_models_1min/NIFTY_1_lstm_model.keras')
+nifty_1_buy_log = joblib.load('./models/nifty_models_1min/NIFTY_1_log_model.joblib')
 
-nifty_1_sell_bilstm  = load_model('./models/nifty_models_1min_sell/NIFTY_1_bilstm_sell_model.keras')
-nifty_1_sell_lstm  = load_model('./models/nifty_models_1min_sell/NIFTY_1_lstm_sell_model.keras')
-nifty_1_sell_log  = joblib.load('./models/nifty_models_1min_sell/NIFTY_1_log_sell_model.joblib')
+nifty_1_sell_bilstm = load_model('./models/nifty_models_1min_sell/NIFTY_1_bilstm_sell_model.keras')
+nifty_1_sell_lstm = load_model('./models/nifty_models_1min_sell/NIFTY_1_lstm_sell_model.keras')
+nifty_1_sell_log = joblib.load('./models/nifty_models_1min_sell/NIFTY_1_log_sell_model.joblib')
 
-#nifty 5
 nifty_5_buy_bilstm = load_model('./models/nifty_models_5min/NIFTY_5_bilstm_model.keras')
-nifty_5_buy_lstm  = load_model('./models/nifty_models_5min/NIFTY_5_lstm_model.keras')
-nifty_5_buy_log  = joblib.load('./models/nifty_models_5min/NIFTY_5_log_model.joblib')
+nifty_5_buy_lstm = load_model('./models/nifty_models_5min/NIFTY_5_lstm_model.keras')
+nifty_5_buy_log = joblib.load('./models/nifty_models_5min/NIFTY_5_log_model.joblib')
 
-nifty_5_sell_bilstm  = load_model('./models/nifty_models_5min_sell/NIFTY_5_bilstm_sell_model.keras')
-nifty_5_sell_lstm  = load_model('./models/nifty_models_5min_sell/NIFTY_5_lstm_sell_model.keras')
-nifty_5_sell_log  = joblib.load('./models/nifty_models_5min_sell/NIFTY_5_log_sell_model.joblib')
+nifty_5_sell_bilstm = load_model('./models/nifty_models_5min_sell/NIFTY_5_bilstm_sell_model.keras')
+nifty_5_sell_lstm = load_model('./models/nifty_models_5min_sell/NIFTY_5_lstm_sell_model.keras')
+nifty_5_sell_log = joblib.load('./models/nifty_models_5min_sell/NIFTY_5_log_sell_model.joblib')
 
-#nifty1 1
 nifty1_1_buy_bilstm = load_model('./models/nifty1_models_1min/NIFTY1!_1_bilstm_model.keras')
-nifty1_1_buy_lstm  = load_model('./models/nifty1_models_1min/NIFTY1!_1_lstm_model.keras')
-nifty1_1_buy_log  = joblib.load('./models/nifty1_models_1min/NIFTY1!_1_log_model.joblib')
+nifty1_1_buy_lstm = load_model('./models/nifty1_models_1min/NIFTY1!_1_lstm_model.keras')
+nifty1_1_buy_log = joblib.load('./models/nifty1_models_1min/NIFTY1!_1_log_model.joblib')
 
-nifty1_1_sell_bilstm  = load_model('./models/nifty1_models_1min_sell/NIFTY1!_1_bilstm_sell_model.keras')
-nifty1_1_sell_lstm  = load_model('./models/nifty1_models_1min_sell/NIFTY1!_1_lstm_sell_model.keras')
-nifty1_1_sell_log  = joblib.load('./models/nifty1_models_1min_sell/NIFTY1!_1_log_sell_model.joblib')
+nifty1_1_sell_bilstm = load_model('./models/nifty1_models_1min_sell/NIFTY1!_1_bilstm_sell_model.keras')
+nifty1_1_sell_lstm = load_model('./models/nifty1_models_1min_sell/NIFTY1!_1_lstm_sell_model.keras')
+nifty1_1_sell_log = joblib.load('./models/nifty1_models_1min_sell/NIFTY1!_1_log_sell_model.joblib')
 
-#nifty1 5
 nifty1_5_buy_bilstm = load_model('./models/nifty1_models_5min/NIFTY1!_5_bilstm_model.keras')
-nifty1_5_buy_lstm  = load_model('./models/nifty1_models_5min/NIFTY1!_5_lstm_model.keras')
-nifty1_5_buy_log  = joblib.load('./models/nifty1_models_5min/NIFTY1!_5_log_model.joblib')
+nifty1_5_buy_lstm = load_model('./models/nifty1_models_5min/NIFTY1!_5_lstm_model.keras')
+nifty1_5_buy_log = joblib.load('./models/nifty1_models_5min/NIFTY1!_5_log_model.joblib')
 
-nifty1_5_sell_bilstm  = load_model('./models/nifty1_models_5min_sell/NIFTY1!_5_bilstm_sell_model.keras')
-nifty1_5_sell_lstm  = load_model('./models/nifty1_models_5min_sell/NIFTY1!_5_lstm_sell_model.keras')
-nifty1_5_sell_log  = joblib.load('./models/nifty1_models_5min_sell/NIFTY1!_5_log_sell_model.joblib')
+nifty1_5_sell_bilstm = load_model('./models/nifty1_models_5min_sell/NIFTY1!_5_bilstm_sell_model.keras')
+nifty1_5_sell_lstm = load_model('./models/nifty1_models_5min_sell/NIFTY1!_5_lstm_sell_model.keras')
+nifty1_5_sell_log = joblib.load('./models/nifty1_models_5min_sell/NIFTY1!_5_log_sell_model.joblib')
 
 app = Flask(__name__)
 
 def add_technical_indicators(df):
-    # Reverse DataFrame
     df = df[::-1]
-    # EMA
     df['ema_20'] = ta.ema(df['Close'], length=20)
     df['ema_50'] = ta.ema(df['Close'], length=50)
-
-    # RSI
     df['rsi'] = ta.rsi(df['Close'], length=14)
-
-    # MACD
-    df['macd'] = ta.macd(df['Close'])['MACD_12_26_9']  # MACD line
-    df['signal_line'] = ta.macd(df['Close'])['MACDs_12_26_9']   # Signal line
-
-    # BBands
+    df['macd'] = ta.macd(df['Close'])['MACD_12_26_9']
+    df['signal_line'] = ta.macd(df['Close'])['MACDs_12_26_9']
     bbands = ta.bbands(df['Close'], length=20, std=2)
     df['upper_band'] = bbands['BBU_20_2.0']
     df['middle_band'] = bbands['BBM_20_2.0']
@@ -69,7 +59,7 @@ def add_technical_indicators(df):
     return df
 
 def calculate_new_columns(df):
-    df = df.copy()  
+    df = df.copy()
     df['wvff'] = df['wvf'] - df['rangeHigh']
     df['ema'] = df['ema_20'] - df['ema_50']
     df['cema'] = df['Close'] - df['ema_20']
@@ -77,7 +67,7 @@ def calculate_new_columns(df):
     df['macdf'] = df['macd'] - df['signal_line']
     df['midlc'] = df['Close'] - df['middle_band']
     df['wvflf'] = df['wvfl'] - df['rangeHighl']
-    df = df.drop(columns=['Timestamp','Volume','Open','Max','Min','wvf','rangeHigh','wvfl','rangeHighl','ema_20', 'ema_50','macd','signal_line','upper_band','lower_band','middle_band'])
+    df = df.drop(columns=['Timestamp', 'Volume', 'Open', 'Max', 'Min', 'wvf', 'rangeHigh', 'wvfl', 'rangeHighl', 'ema_20', 'ema_50', 'macd', 'signal_line', 'upper_band', 'lower_band', 'middle_band'])
     return df
 
 def calculate_diff_columns(data):
@@ -85,7 +75,6 @@ def calculate_diff_columns(data):
     xx = xx[::-1]
     df_diff = xx.diff().fillna(0)
     df_diff = df_diff[::-1]
-
     return df_diff
 
 def scaling(df):
@@ -102,7 +91,6 @@ def prepare_data(data):
     data_diff = calculate_diff_columns(data_processed.copy())
     data_diff = scaling(data_diff.copy())
     data_processed = scaling(data_processed.copy())
-
     X1 = []
     X1.append(data_processed)
     X2 = []
@@ -114,14 +102,11 @@ def nifty_1():
     csv_data = request.get_json().get('csvData')
     direction = request.get_json().get('dir')
     df = pd.read_csv(io.StringIO(csv_data))
-    
     df = df.astype(float, errors='ignore')
     data_without_diff, data_with_diff = prepare_data(df)
-
     data_without_diff = np.array(data_without_diff)
     data_with_diff = np.array(data_with_diff)
     result = False
-
     if direction == 1:
         xxc = nifty_1_buy_bilstm.predict(data_without_diff)
         xxl = nifty_1_buy_lstm.predict(data_with_diff)
@@ -134,7 +119,6 @@ def nifty_1():
         xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
         pred = nifty_1_sell_log.predict_proba(xx)[:, 1]
         result = pred > 0.5
-
     return jsonify(result.tolist())
 
 @app.route('/nifty_5', methods=['POST'])
@@ -142,14 +126,11 @@ def nifty_5():
     csv_data = request.get_json().get('csvData')
     direction = request.get_json().get('dir')
     df = pd.read_csv(io.StringIO(csv_data))
-    
     df = df.astype(float, errors='ignore')
     data_without_diff, data_with_diff = prepare_data(df)
-
     data_without_diff = np.array(data_without_diff)
     data_with_diff = np.array(data_with_diff)
     result = False
-
     if direction == 1:
         xxc = nifty_5_buy_bilstm.predict(data_without_diff)
         xxl = nifty_5_buy_lstm.predict(data_with_diff)
@@ -162,7 +143,6 @@ def nifty_5():
         xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
         pred = nifty_5_sell_log.predict_proba(xx)[:, 1]
         result = pred > 0.5
-
     return jsonify(result.tolist())
 
 @app.route('/nifty1_1', methods=['POST'])
@@ -170,14 +150,11 @@ def nifty1_1():
     csv_data = request.get_json().get('csvData')
     direction = request.get_json().get('dir')
     df = pd.read_csv(io.StringIO(csv_data))
-    
     df = df.astype(float, errors='ignore')
     data_without_diff, data_with_diff = prepare_data(df)
-
     data_without_diff = np.array(data_without_diff)
     data_with_diff = np.array(data_with_diff)
     result = False
-
     if direction == 1:
         xxc = nifty1_1_buy_bilstm.predict(data_without_diff)
         xxl = nifty1_1_buy_lstm.predict(data_with_diff)
@@ -190,7 +167,6 @@ def nifty1_1():
         xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
         pred = nifty1_1_sell_log.predict_proba(xx)[:, 1]
         result = pred > 0.5
-
     return jsonify(result.tolist())
 
 @app.route('/nifty1_5', methods=['POST'])
@@ -198,14 +174,11 @@ def nifty1_5():
     csv_data = request.get_json().get('csvData')
     direction = request.get_json().get('dir')
     df = pd.read_csv(io.StringIO(csv_data))
-    
     df = df.astype(float, errors='ignore')
     data_without_diff, data_with_diff = prepare_data(df)
-
     data_without_diff = np.array(data_without_diff)
     data_with_diff = np.array(data_with_diff)
     result = False
-
     if direction == 1:
         xxc = nifty1_5_buy_bilstm.predict(data_without_diff)
         xxl = nifty1_5_buy_lstm.predict(data_with_diff)
@@ -218,8 +191,8 @@ def nifty1_5():
         xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
         pred = nifty1_5_sell_log.predict_proba(xx)[:, 1]
         result = pred > 0.5
-
     return jsonify(result.tolist())
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0" ,port = 3344)
+    port = int(os.environ.get('PORT', 3344))  # Use PORT environment variable if available
+    app.run(debug=True, host="0.0.0.0", port=port)
