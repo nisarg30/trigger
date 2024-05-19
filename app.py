@@ -194,5 +194,6 @@ def nifty1_5():
     return jsonify(result.tolist())
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 3344))  # Use PORT environment variable if available
-    app.run(debug=True, host="0.0.0.0", port=port)
+    port = int(os.environ.get('PORT', 3344))  
+    print(port)
+    app.run(host="0.0.0.0", port=port)
