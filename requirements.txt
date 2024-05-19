@@ -12,9 +12,9 @@ colorama==0.4.4
 # distro==1.7.0
 # editorconfig==0.12.2
 flask==3.0.3
-gyp==0.1
-hidpidaemon==18.4.6
-idna==3.3
+# gyp==0.1
+# hidpidaemon==18.4.6
+# idna==3.3
 importlib-metadata==4.6.4
 jeepney==0.7.1
 jsbeautifier==1.14.0
@@ -61,7 +61,7 @@ rich==13.7.1
 scikit-learn==1.4.2
 secretstorage==3.3.1
 sessioninstaller==0.0.0
-smartapi-python==1.4.8
+#smartapi-python==1.4.8
 systemd-python==234
 ta-lib==0.4.28
 tensorflow==2.15.0
