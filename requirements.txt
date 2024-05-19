@@ -1,5 +1,6 @@
 absl-py==2.1.0
 astunparse==1.6.3
+bcc==0.18.0
 blinker==1.8.2
 Brlapi==0.8.3
 cachetools==5.3.3
