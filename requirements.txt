@@ -5,12 +5,12 @@ chardet==4.0.0
 # chrome-gnome-shell==0.0.0
 colorama==0.4.4
 # command-not-found==0.3
-cryptography==3.4.8
-cupshelpers==1.0
-dbus-python==1.2.18
-defer==1.0.6
-distro==1.7.0
-editorconfig==0.12.2
+# cryptography==3.4.8
+# cupshelpers==1.0
+# dbus-python==1.2.18
+# defer==1.0.6
+# distro==1.7.0
+# editorconfig==0.12.2
 flask==3.0.3
 gyp==0.1
 hidpidaemon==18.4.6
