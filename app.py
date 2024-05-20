@@ -236,6 +236,11 @@ def nifty1_5():
         result = pred > 0.5
     logger.debug(f"Prediction result: {result}")
     return jsonify(result.tolist())
+    
+@app.errorhandler(Exception)
+def handle_error(e):
+    logger.error(f"An error occurred: {str(e)}")
+    return jsonify({"error": "An error occurred. Please try again later."}), 500
 
 # if __name__ == '__main__':
 #     port = int(os.environ.get('PORT', 8080))
