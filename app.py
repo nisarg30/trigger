@@ -6,7 +6,12 @@ import pandas_ta as ta
 import joblib
 import io
 from keras.models import load_model
+import tensorflow as tf
 import os
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+
+tf.get_logger().setLevel('ERROR')
 
 app = Flask(__name__)
 
