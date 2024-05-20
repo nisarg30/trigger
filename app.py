@@ -107,103 +107,103 @@ def prepare_data(data):
 def hello_world():
     return 'Hello, World!'
 
-@app.route('/nifty_1', methods=['POST'])
-def nifty_1():
-    csv_data = request.get_json().get('csvData')
-    direction = request.get_json().get('dir')
-    df = pd.read_csv(io.StringIO(csv_data))
-    df = df.astype(float, errors='ignore')
-    data_without_diff, data_with_diff = prepare_data(df)
-    data_without_diff = np.array(data_without_diff)
-    data_with_diff = np.array(data_with_diff)
-    result = False
-    if direction == 1:
-        xxc = nifty_1_buy_bilstm.predict(data_without_diff)
-        xxl = nifty_1_buy_lstm.predict(data_with_diff)
-        xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
-        pred = nifty_1_buy_log.predict_proba(xx)[:, 1]
-        result = pred > 0.5
-    else:
-        xxc = nifty_1_sell_bilstm.predict(data_without_diff)
-        xxl = nifty_1_sell_lstm.predict(data_with_diff)
-        xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
-        pred = nifty_1_sell_log.predict_proba(xx)[:, 1]
-        result = pred > 0.5
-    return jsonify(result.tolist())
+# @app.route('/nifty_1', methods=['POST'])
+# def nifty_1():
+#     csv_data = request.get_json().get('csvData')
+#     direction = request.get_json().get('dir')
+#     df = pd.read_csv(io.StringIO(csv_data))
+#     df = df.astype(float, errors='ignore')
+#     data_without_diff, data_with_diff = prepare_data(df)
+#     data_without_diff = np.array(data_without_diff)
+#     data_with_diff = np.array(data_with_diff)
+#     result = False
+#     if direction == 1:
+#         xxc = nifty_1_buy_bilstm.predict(data_without_diff)
+#         xxl = nifty_1_buy_lstm.predict(data_with_diff)
+#         xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
+#         pred = nifty_1_buy_log.predict_proba(xx)[:, 1]
+#         result = pred > 0.5
+#     else:
+#         xxc = nifty_1_sell_bilstm.predict(data_without_diff)
+#         xxl = nifty_1_sell_lstm.predict(data_with_diff)
+#         xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
+#         pred = nifty_1_sell_log.predict_proba(xx)[:, 1]
+#         result = pred > 0.5
+#     return jsonify(result.tolist())
 
-@app.route('/nifty_5', methods=['POST'])
-def nifty_5():
-    csv_data = request.get_json().get('csvData')
-    direction = request.get_json().get('dir')
-    df = pd.read_csv(io.StringIO(csv_data))
-    df = df.astype(float, errors='ignore')
-    data_without_diff, data_with_diff = prepare_data(df)
-    data_without_diff = np.array(data_without_diff)
-    data_with_diff = np.array(data_with_diff)
-    result = False
-    if direction == 1:
-        xxc = nifty_5_buy_bilstm.predict(data_without_diff)
-        xxl = nifty_5_buy_lstm.predict(data_with_diff)
-        xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
-        pred = nifty_5_buy_log.predict_proba(xx)[:, 1]
-        result = pred > 0.5
-    else:
-        xxc = nifty_5_sell_bilstm.predict(data_without_diff)
-        xxl = nifty_5_sell_lstm.predict(data_with_diff)
-        xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
-        pred = nifty_5_sell_log.predict_proba(xx)[:, 1]
-        result = pred > 0.5
-    return jsonify(result.tolist())
+# @app.route('/nifty_5', methods=['POST'])
+# def nifty_5():
+#     csv_data = request.get_json().get('csvData')
+#     direction = request.get_json().get('dir')
+#     df = pd.read_csv(io.StringIO(csv_data))
+#     df = df.astype(float, errors='ignore')
+#     data_without_diff, data_with_diff = prepare_data(df)
+#     data_without_diff = np.array(data_without_diff)
+#     data_with_diff = np.array(data_with_diff)
+#     result = False
+#     if direction == 1:
+#         xxc = nifty_5_buy_bilstm.predict(data_without_diff)
+#         xxl = nifty_5_buy_lstm.predict(data_with_diff)
+#         xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
+#         pred = nifty_5_buy_log.predict_proba(xx)[:, 1]
+#         result = pred > 0.5
+#     else:
+#         xxc = nifty_5_sell_bilstm.predict(data_without_diff)
+#         xxl = nifty_5_sell_lstm.predict(data_with_diff)
+#         xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
+#         pred = nifty_5_sell_log.predict_proba(xx)[:, 1]
+#         result = pred > 0.5
+#     return jsonify(result.tolist())
 
-@app.route('/nifty1_1', methods=['POST'])
-def nifty1_1():
-    csv_data = request.get_json().get('csvData')
-    direction = request.get_json().get('dir')
-    df = pd.read_csv(io.StringIO(csv_data))
-    df = df.astype(float, errors='ignore')
-    data_without_diff, data_with_diff = prepare_data(df)
-    data_without_diff = np.array(data_without_diff)
-    data_with_diff = np.array(data_with_diff)
-    result = False
-    if direction == 1:
-        xxc = nifty1_1_buy_bilstm.predict(data_without_diff)
-        xxl = nifty1_1_buy_lstm.predict(data_with_diff)
-        xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
-        pred = nifty1_1_buy_log.predict_proba(xx)[:, 1]
-        result = pred > 0.5
-    else:
-        xxc = nifty1_1_sell_bilstm.predict(data_without_diff)
-        xxl = nifty1_1_sell_lstm.predict(data_with_diff)
-        xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
-        pred = nifty1_1_sell_log.predict_proba(xx)[:, 1]
-        result = pred > 0.5
-    return jsonify(result.tolist())
+# @app.route('/nifty1_1', methods=['POST'])
+# def nifty1_1():
+#     csv_data = request.get_json().get('csvData')
+#     direction = request.get_json().get('dir')
+#     df = pd.read_csv(io.StringIO(csv_data))
+#     df = df.astype(float, errors='ignore')
+#     data_without_diff, data_with_diff = prepare_data(df)
+#     data_without_diff = np.array(data_without_diff)
+#     data_with_diff = np.array(data_with_diff)
+#     result = False
+#     if direction == 1:
+#         xxc = nifty1_1_buy_bilstm.predict(data_without_diff)
+#         xxl = nifty1_1_buy_lstm.predict(data_with_diff)
+#         xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
+#         pred = nifty1_1_buy_log.predict_proba(xx)[:, 1]
+#         result = pred > 0.5
+#     else:
+#         xxc = nifty1_1_sell_bilstm.predict(data_without_diff)
+#         xxl = nifty1_1_sell_lstm.predict(data_with_diff)
+#         xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
+#         pred = nifty1_1_sell_log.predict_proba(xx)[:, 1]
+#         result = pred > 0.5
+#     return jsonify(result.tolist())
 
-@app.route('/nifty1_5', methods=['POST'])
-def nifty1_5():
-    csv_data = request.get_json().get('csvData')
-    direction = request.get_json().get('dir')
-    df = pd.read_csv(io.StringIO(csv_data))
-    df = df.astype(float, errors='ignore')
-    data_without_diff, data_with_diff = prepare_data(df)
-    data_without_diff = np.array(data_without_diff)
-    data_with_diff = np.array(data_with_diff)
-    result = False
-    if direction == 1:
-        xxc = nifty1_5_buy_bilstm.predict(data_without_diff)
-        xxl = nifty1_5_buy_lstm.predict(data_with_diff)
-        xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
-        pred = nifty1_5_buy_log.predict_proba(xx)[:, 1]
-        result = pred > 0.5
-    else:
-        xxc = nifty1_5_sell_bilstm.predict(data_without_diff)
-        xxl = nifty1_5_sell_lstm.predict(data_with_diff)
-        xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
-        pred = nifty1_5_sell_log.predict_proba(xx)[:, 1]
-        result = pred > 0.5
-    return jsonify(result.tolist())
+# @app.route('/nifty1_5', methods=['POST'])
+# def nifty1_5():
+#     csv_data = request.get_json().get('csvData')
+#     direction = request.get_json().get('dir')
+#     df = pd.read_csv(io.StringIO(csv_data))
+#     df = df.astype(float, errors='ignore')
+#     data_without_diff, data_with_diff = prepare_data(df)
+#     data_without_diff = np.array(data_without_diff)
+#     data_with_diff = np.array(data_with_diff)
+#     result = False
+#     if direction == 1:
+#         xxc = nifty1_5_buy_bilstm.predict(data_without_diff)
+#         xxl = nifty1_5_buy_lstm.predict(data_with_diff)
+#         xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
+#         pred = nifty1_5_buy_log.predict_proba(xx)[:, 1]
+#         result = pred > 0.5
+#     else:
+#         xxc = nifty1_5_sell_bilstm.predict(data_without_diff)
+#         xxl = nifty1_5_sell_lstm.predict(data_with_diff)
+#         xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
+#         pred = nifty1_5_sell_log.predict_proba(xx)[:, 1]
+#         result = pred > 0.5
+#     return jsonify(result.tolist())
 
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 8080))
-    app.run(host='0.0.0.0', port=port)
+# if __name__ == '__main__':
+#     port = int(os.environ.get('PORT', 8080))
+#     app.run(host='0.0.0.0', port=port)
 
