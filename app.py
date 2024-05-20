@@ -242,6 +242,6 @@ def handle_error(e):
     logger.error(f"An error occurred: {str(e)}")
     return jsonify({"error": "An error occurred. Please try again later."}), 500
 
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 8080))
-    app.run(host='0.0.0.0', port=port)
+# if __name__ == '__main__':
+#     port = int(os.environ.get('PORT', 8080))
+#     app.run(host='0.0.0.0', port=port)
