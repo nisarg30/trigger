@@ -199,7 +199,7 @@ def nifty1_5():
         result = pred > 0.5
     return jsonify(result.tolist())
 
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 8080))
-    app.run(host='0.0.0.0', port=port)
+# if __name__ == '__main__':
+#     port = int(os.environ.get('PORT', 8080))
+#     app.run(host='0.0.0.0', port=port)
 
