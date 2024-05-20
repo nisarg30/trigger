@@ -7,6 +7,9 @@ import joblib
 import io
 from keras.models import load_model
 
+
+app = Flask(__name__)
+
 # Load models
 nifty_1_buy_bilstm = load_model('./models/nifty_models_1min/NIFTY_1_bilstm_model.keras')
 nifty_1_buy_lstm = load_model('./models/nifty_models_1min/NIFTY_1_lstm_model.keras')
@@ -40,7 +43,6 @@ nifty1_5_sell_bilstm = load_model('./models/nifty1_models_5min_sell/NIFTY1!_5_bi
 nifty1_5_sell_lstm = load_model('./models/nifty1_models_5min_sell/NIFTY1!_5_lstm_sell_model.keras')
 nifty1_5_sell_log = joblib.load('./models/nifty1_models_5min_sell/NIFTY1!_5_log_sell_model.joblib')
 
-app = Flask(__name__)
 
 def add_technical_indicators(df):
     df = df[::-1]
