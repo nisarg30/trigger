@@ -56,18 +56,19 @@ logger.info("Model paths configured.")
 
 def add_technical_indicators(df):
     logger.info("Adding technical indicators...")
-    df = df[::-1]  # Reverse the DataFrame
+    df = df.copy()  # Create a copy of the DataFrame to avoid modifying the original
+    df = df[::-1]   # Reverse the DataFrame
     
-    df['ema_20'] = ta.ema(df['Close'], length=20)
-    df['ema_50'] = ta.ema(df['Close'], length=50)
-    df['rsi'] = ta.rsi(df['Close'], length=14)
-    macd = ta.macd(df['Close'])
-    df['macd'] = macd['MACD_12_26_9']
-    df['signal_line'] = macd['MACDs_12_26_9']
+    df.loc[:, 'ema_20'] = ta.ema(df['Close'], length=20)
+    df.loc[:, 'ema_50'] = ta.ema(df['Close'], length=50)
+    df.loc[:, 'rsi'] = ta.rsi(df['Close'], length=14)
+    df.loc[:, 'macd'] = ta.macd(df['Close'])['MACD_12_26_9']
+    df.loc[:, 'signal_line'] = ta.macd(df['Close'])['MACDs_12_26_9']
+    
     bbands = ta.bbands(df['Close'], length=20, std=2)
-    df['upper_band'] = bbands['BBU_20_2.0']
-    df['middle_band'] = bbands['BBM_20_2.0']
-    df['lower_band'] = bbands['BBL_20_2.0']
+    df.loc[:, 'upper_band'] = bbands['BBU_20_2.0']
+    df.loc[:, 'middle_band'] = bbands['BBM_20_2.0']
+    df.loc[:, 'lower_band'] = bbands['BBL_20_2.0']
     
     df = df[::-1]  # Reverse the DataFrame back to its original order
     df = df.dropna()  # Drop rows with NaN values
