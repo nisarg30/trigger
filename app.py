@@ -9,6 +9,7 @@ from keras.models import load_model
 import tensorflow as tf
 import os
 import logging
+import psutil
 
 # Initialize the Flask application
 app = Flask(__name__)
@@ -120,6 +121,13 @@ def prepare_data(data):
 def hello_world():
     return 'Hello, World!'
 
+@app.route('/memory')
+def memory_usage():
+    process = psutil.Process()
+    mem_info = process.memory_info()
+    return f"RSS: {mem_info.rss / (1024 ** 2):.2f} MB, VMS: {mem_info.vms / (1024 ** 2):.2f} MB"
+
+
 def process_request(csv_data, direction, model_type):
     logger.info(f"Processing request for {model_type}...")
     df = pd.read_csv(io.StringIO(csv_data))
@@ -170,6 +178,6 @@ def handle_error(e):
     logger.error(f"An error occurred: {str(e)}")
     return jsonify({"error": "An error occurred. Please try again later."}), 500
 
-# if __name__ == '__main__':
-#     port = int(os.environ.get('PORT', 8080))
-#     app.run(host='0.0.0.0', port=port)
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 8080))
+    app.run(host='0.0.0.0', port=port)
