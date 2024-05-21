@@ -7,6 +7,8 @@ import joblib
 import io
 from keras.models import load_model
 import tensorflow as tf
+import gc
+
 tf.config.run_functions_eagerly(True)
 
 import os
@@ -129,15 +131,18 @@ def memory_usage():
     mem_info = process.memory_info()
     return f"RSS: {mem_info.rss / (1024 ** 2):.2f} MB, VMS: {mem_info.vms / (1024 ** 2):.2f} MB"
 
-
 def process_request(csv_data, direction, model_type):
     logger.info(f"Processing request for {model_type}...")
+    
+    # Read and prepare data
     df = pd.read_csv(io.StringIO(csv_data))
     df = df.astype(float, errors='ignore')
     data_without_diff, data_with_diff = prepare_data(df)
     data_without_diff = np.array(data_without_diff)
     data_with_diff = np.array(data_with_diff)
+    
     result = False
+    
     if direction == 1:
         logger.info("Processing buy direction...")
         xxc = load_model_on_demand(model_paths[f'{model_type}_buy_bilstm']).predict(data_without_diff)
@@ -152,8 +157,15 @@ def process_request(csv_data, direction, model_type):
         xx = pd.DataFrame({'s': xxc.flatten(), 'l': xxl.flatten()})
         pred = load_joblib_model_on_demand(model_paths[f'{model_type}_sell_log']).predict_proba(xx)[:, 1]
         result = pred > 0.5
+    
     logger.debug(f"Prediction result: {result}")
+    
+    # Free up memory
+    del df, data_without_diff, data_with_diff, xxc, xxl, xx, pred
+    gc.collect()
+    
     return jsonify(result.tolist())
+
 
 @app.route('/nifty_1', methods=['POST'])
 def nifty_1():
