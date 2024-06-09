@@ -19,7 +19,11 @@ import psutil
 app = Flask(__name__)
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
 logger = logging.getLogger(__name__)
 
 # Function to load models on demand
@@ -34,9 +38,15 @@ model_paths = {
     'nifty_1_buy_bilstm': './models/nifty_models_1min/NIFTY_1_bilstm_model.keras',
     'nifty_1_buy_lstm': './models/nifty_models_1min/NIFTY_1_lstm_model.keras',
     'nifty_1_buy_log': './models/nifty_models_1min/NIFTY_1_log_model.joblib',
+    'banknifty_1_buy_bilstm': './models/banknifty_models_1min/BANKNIFTY_1_bilstm_model.keras',
+    'banknifty_1_buy_lstm': './models/banknifty_models_1min/BANKNIFTY_1_lstm_model.keras',
+    'banknifty_1_buy_log': './models/banknifty_models_1min/BANKNIFTY_1_log_model.joblib',
     'nifty_1_sell_bilstm': './models/nifty_models_1min_sell/NIFTY_1_bilstm_sell_model.keras',
     'nifty_1_sell_lstm': './models/nifty_models_1min_sell/NIFTY_1_lstm_sell_model.keras',
     'nifty_1_sell_log': './models/nifty_models_1min_sell/NIFTY_1_log_sell_model.joblib',
+    'banknifty_1_sell_bilstm': './models/banknifty_models_1min_sell/BANKNIFTY_1_bilstm_sell_model.keras',
+    'banknifty_1_sell_lstm': './models/banknifty_models_1min_sell/BANKNIFTY_1_lstm_sell_model.keras',
+    'banknifty_1_sell_log': './models/banknifty_models_1min_sell/BANKNIFTY_1_log_sell_model.joblib',
     'nifty_5_buy_bilstm': './models/nifty_models_5min/NIFTY_5_bilstm_model.keras',
     'nifty_5_buy_lstm': './models/nifty_models_5min/NIFTY_5_lstm_model.keras',
     'nifty_5_buy_log': './models/nifty_models_5min/NIFTY_5_log_model.joblib',
@@ -186,6 +196,12 @@ def nifty1_1():
 def nifty1_5():
     data = request.get_json()
     return process_request(data.get('csvData'), data.get('dir'), 'nifty1_5')
+
+@app.route('/banknifty_1', methods=['POST'])
+def nifty1_5():
+    data = request.get_json()
+    return process_request(data.get('csvData'), data.get('dir'), 'nifty1_5')
+
 
 @app.errorhandler(Exception)
 def handle_error(e):
