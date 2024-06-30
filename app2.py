@@ -53,18 +53,6 @@ model_paths = {
     'nifty_5_sell_bilstm': './models/nifty_models_5min_sell/NIFTY_5_bilstm_sell_model.keras',
     'nifty_5_sell_lstm': './models/nifty_models_5min_sell/NIFTY_5_lstm_sell_model.keras',
     'nifty_5_sell_log': './models/nifty_models_5min_sell/NIFTY_5_log_sell_model.joblib',
-    'nifty1_1_buy_bilstm': './models/nifty1_models_1min/NIFTY1!_1_bilstm_model.keras',
-    'nifty1_1_buy_lstm': './models/nifty1_models_1min/NIFTY1!_1_lstm_model.keras',
-    'nifty1_1_buy_log': './models/nifty1_models_1min/NIFTY1!_1_log_model.joblib',
-    'nifty1_1_sell_bilstm': './models/nifty1_models_1min_sell/NIFTY1!_1_bilstm_sell_model.keras',
-    'nifty1_1_sell_lstm': './models/nifty1_models_1min_sell/NIFTY1!_1_lstm_sell_model.keras',
-    'nifty1_1_sell_log': './models/nifty1_models_1min_sell/NIFTY1!_1_log_sell_model.joblib',
-    'nifty1_5_buy_bilstm': './models/nifty1_models_5min/NIFTY1!_5_bilstm_model.keras',
-    'nifty1_5_buy_lstm': './models/nifty1_models_5min/NIFTY1!_5_lstm_model.keras',
-    'nifty1_5_buy_log': './models/nifty1_models_5min/NIFTY1!_5_log_model.joblib',
-    'nifty1_5_sell_bilstm': './models/nifty1_models_5min_sell/NIFTY1!_5_bilstm_sell_model.keras',
-    'nifty1_5_sell_lstm': './models/nifty1_models_5min_sell/NIFTY1!_5_lstm_sell_model.keras',
-    'nifty1_5_sell_log': './models/nifty1_models_5min_sell/NIFTY1!_5_log_sell_model.joblib',
 }
 
 logger.info("Model paths configured.")
@@ -198,9 +186,9 @@ def nifty1_5():
     return process_request(data.get('csvData'), data.get('dir'), 'nifty1_5')
 
 @app.route('/banknifty_1', methods=['POST'])
-def nifty1_5():
+def banknifty_1():
     data = request.get_json()
-    return process_request(data.get('csvData'), data.get('dir'), 'nifty1_5')
+    return process_request(data.get('csvData'), data.get('dir'), 'banknifty_1')
 
 
 @app.errorhandler(Exception)
