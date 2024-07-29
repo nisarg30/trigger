@@ -37,8 +37,8 @@ To set up the environment for training and evaluating the model, follow these st
 
 1. **Clone the repository**
     ```bash
-    git clone https://github.com/your-username/trading-signal-validity-prediction.git
-    cd trading-signal-validity-prediction
+    git clone https://github.com/nisarg30/trigger.git
+    cd trigger
     ```
 
 2. **Create a virtual environment and activate it**
